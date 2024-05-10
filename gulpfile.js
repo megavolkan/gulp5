@@ -44,6 +44,10 @@ function jsTask() {
   return src([
     // Birleştirilecek JS dosyaları
     'src/scripts/_bootstrap.bundle.js',
+    // 'src/scripts/_navigation.js',
+    // 'src/scripts/_swiper.js',
+    // 'src/scripts/_telinput.js',
+    // 'src/scripts/_fancybox.umd.js.js',
     'src/scripts/_custom.js'
   ], { sourcemaps: true })
     .pipe(concat('script.js'))

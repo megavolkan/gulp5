@@ -1,0 +1,94 @@
+@font-face {
+  font-family: "iconfont";
+  src: url('../fonts/iconfont/iconfont.eot');
+  src: url('../fonts/iconfont/iconfont.eot?#iefix') format('eot'),
+    url('../fonts/iconfont/iconfont.woff2') format('woff2'),
+    url('../fonts/iconfont/iconfont.woff') format('woff'),
+    url('../fonts/iconfont/iconfont.ttf') format('truetype'),
+    url('../fonts/iconfont/iconfont.svg#iconfont') format('svg');
+}
+
+.icon:before {
+  font-family: "iconfont";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal !important;
+  /* speak: none; only necessary if not using the private unicode range (firstGlyph option) */
+  text-decoration: none;
+  text-transform: none;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: -.125em;
+}
+
+ .icon-arrow-left:before {
+      content: "\E001";
+    }
+
+     .icon-arrow-right:before {
+      content: "\E002";
+    }
+
+     .icon-chevron-left:before {
+      content: "\E003";
+    }
+
+     .icon-chevron-right:before {
+      content: "\E004";
+    }
+
+     .icon-envelope:before {
+      content: "\E005";
+    }
+
+     .icon-facebook:before {
+      content: "\E006";
+    }
+
+     .icon-geo-alt-fill:before {
+      content: "\E007";
+    }
+
+     .icon-house:before {
+      content: "\E008";
+    }
+
+     .icon-instagram:before {
+      content: "\E009";
+    }
+
+     .icon-linkedin:before {
+      content: "\E00A";
+    }
+
+     .icon-pinterest:before {
+      content: "\E00B";
+    }
+
+     .icon-play-fill:before {
+      content: "\E00C";
+    }
+
+     .icon-telephone-fill:before {
+      content: "\E00D";
+    }
+
+     .icon-twitter-x:before {
+      content: "\E00E";
+    }
+
+     .icon-twitter:before {
+      content: "\E00F";
+    }
+
+     .icon-whatsapp:before {
+      content: "\E010";
+    }
+
+     .icon-youtube:before {
+      content: "\E011";
+    }
+
+    

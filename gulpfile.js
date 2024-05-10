@@ -6,6 +6,9 @@ const postcss = require('gulp-postcss')
 const concat = require('gulp-concat')
 const terser = require('gulp-terser')
 const fileinclude = require('gulp-file-include')
+const rename = require('gulp-rename')
+const iconfont = require('gulp-iconfont');
+const iconfontCss = require('gulp-iconfont-css');
 const browserSync = require('browser-sync').create()
 
 
@@ -21,7 +24,7 @@ function fileincludeTask() {
 
 // Scss Task w/o Reload
 function scssTask() {
-  return src('src/scss/**/*.scss', { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -30,7 +33,7 @@ function scssTask() {
 
 // Scss Task w/o Reload
 function bsScssTask() {
-  return src('src/scss/**/*.scss', { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -40,7 +43,7 @@ function bsScssTask() {
 function jsTask() {
   return src([
     // Birleştirilecek JS dosyaları
-    //'src/scripts/_bootstrap.bundle.js',
+    'src/scripts/_bootstrap.bundle.js',
     'src/scripts/_custom.js'
   ], { sourcemaps: true })
     .pipe(concat('script.js'))
@@ -97,7 +100,7 @@ function iconfontTask(done) {
       fontName: fontName,
       //path: 'src/icons/templates/_icons.scss',
       path: 'src/icons/templates/_icons.css',
-      targetPath: '../../../../src/sass/inc/_iconfont.scss',
+      targetPath: '../../../../src/scss/inc/_iconfont.scss',
       fontPath: '../fonts/iconfont/'
     }))
     .pipe(iconfont({
@@ -112,6 +115,14 @@ function iconfontTask(done) {
   done()
 }
 
+// Customize Bootstrap SCSS
+function customizeBootstrap() {
+  return src('src/scss/inc/bootstrap/bootstrap.scss')
+    .pipe(sass())
+    .pipe(rename('_bootstrap.scss'))
+    .pipe(dest('src/scss/inc'))
+}
+
 
 // DEV: Çalıştırmak için terminalde: gulp
 exports.default = series(
@@ -123,4 +134,7 @@ exports.default = series(
 )
 
 // ICONFONT: Çalıştırmak için terminalde: gulp iconfont
-exports.iconfont = series(iconfontTask)
+exports.iconfont = series(iconfontTask, bsScssTask)
+
+// CUSTOMIZE BOOTSTRAP: Çalıştırmak için terminalde: gulp bootstrap
+exports.bootstrap = series(customizeBootstrap, bsScssTask)

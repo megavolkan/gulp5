@@ -24,7 +24,7 @@ function fileincludeTask() {
 
 // Scss Task w/o Reload
 function scssTask() {
-  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap'], { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap_source/**/*.*'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -33,7 +33,7 @@ function scssTask() {
 
 // Scss Task w/o Reload
 function bsScssTask() {
-  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap'], { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap_source/**/*.*'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -90,8 +90,9 @@ function watchTask() {
   //watch('dist/*.html', browsersyncReload)
   watch('src/scss/**/*.scss', scssTask) // Sadece css dosyalarını hot reload inject 
   // src klasöründe .scss ve .js dosyalarında değişiklik olduğunda tarayıcıyı reload
-  //watch(['src/scss/**/*.scss', 'src/js/**/*.js', 'src/views/**/*.html'], series(scssTask, jsTask, fileincludeTask, browsersyncReload))
-  watch(['src/js/**/*.js', 'src/views/**/*.html'], series(parallel(bsScssTask, jsTask, fileincludeTask), browsersyncReload))
+  //watch(['src/scss/**/*.scss', 'src/scripts/**/*.js', 'src/views/**/*.html'], series(scssTask, jsTask, fileincludeTask, browsersyncReload))
+  watch('src/views/**/*.html', series(parallel(bsScssTask, fileincludeTask), browsersyncReload))
+  watch('src/scripts/**/*.js', series(jsTask, browsersyncReload))
 }
 
 // Icon font derleyici

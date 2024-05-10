@@ -121,7 +121,7 @@ function iconfontTask(done) {
 
 // Customize Bootstrap SCSS
 function customizeBootstrap() {
-  return src('src/scss/inc/bootstrap/bootstrap.scss')
+  return src('src/scss/inc/bootstrap_source/bootstrap.scss')
     .pipe(sass())
     .pipe(rename('_bootstrap.scss'))
     .pipe(dest('src/scss/inc'))

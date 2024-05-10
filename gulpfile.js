@@ -87,6 +87,31 @@ function watchTask() {
   watch(['src/js/**/*.js', 'src/views/**/*.html'], series(parallel(bsScssTask, jsTask, fileincludeTask), browsersyncReload))
 }
 
+// Icon font derleyici
+const fontName = 'iconfont'
+const runTimestamp = Math.round(Date.now() / 1000);
+
+function iconfontTask(done) {
+  return src(['src/icons/*.svg'])
+    .pipe(iconfontCss({
+      fontName: fontName,
+      //path: 'src/icons/templates/_icons.scss',
+      path: 'src/icons/templates/_icons.css',
+      targetPath: '../../../../src/sass/inc/_iconfont.scss',
+      fontPath: '../fonts/iconfont/'
+    }))
+    .pipe(iconfont({
+      fontName: fontName,
+      prependUnicode: true,
+      formats: ['ttf', 'eot', 'woff', 'woff2', 'svg'], // default, 'woff2' and 'svg' are available
+      timestamp: runTimestamp, // recommended to get consistent builds when watching files
+      normalize: true,
+      fontHeight: 1001
+    }))
+    .pipe(dest('dist/assets/fonts/iconfont/'))
+  done()
+}
+
 
 // DEV: Çalıştırmak için terminalde: gulp
 exports.default = series(
@@ -96,3 +121,6 @@ exports.default = series(
   browsersyncServe,
   watchTask,
 )
+
+// ICONFONT: Çalıştırmak için terminalde: gulp iconfont
+exports.iconfont = series(iconfontTask)

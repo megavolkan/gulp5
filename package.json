@@ -14,6 +14,8 @@
     "gulp": "^5.0.0",
     "gulp-concat": "^2.6.1",
     "gulp-file-include": "^2.3.0",
+    "gulp-iconfont": "^11.0.1",
+    "gulp-iconfont-css": "^3.0.0",
     "gulp-postcss": "^10.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-terser": "^2.1.0",

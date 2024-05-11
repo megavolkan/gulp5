@@ -24,7 +24,7 @@ function fileincludeTask() {
 
 // Scss Task w/o Reload
 function scssTask() {
-  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap_source/**/*.*'], { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/vendor/bootstrap_source/**/*.*'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -33,7 +33,7 @@ function scssTask() {
 
 // Scss Task w/o Reload
 function bsScssTask() {
-  return src(['src/scss/**/*.scss', '!src/scss/inc/bootstrap_source/**/*.*'], { sourcemaps: true })
+  return src(['src/scss/**/*.scss', '!src/scss/vendor/bootstrap_source/**/*.*'], { sourcemaps: true })
     .pipe(sass())
     .pipe(postcss([cssnano()]))
     .pipe(dest('dist/assets/css', { sourcemaps: '.' }))
@@ -122,7 +122,7 @@ function iconfontTask(done) {
 
 // Customize Bootstrap SCSS
 function customizeBootstrap() {
-  return src('src/scss/inc/bootstrap_source/bootstrap.scss')
+  return src('src/scss/vendor/bootstrap_source/bootstrap.scss')
     .pipe(sass())
     .pipe(rename('_bootstrap.scss'))
     .pipe(dest('src/scss/inc'))

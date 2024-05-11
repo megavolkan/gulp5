@@ -34,16 +34,14 @@ body {
   position: relative;
 }
 
-// Custom Responsive Grid Layout
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-// Custom Responsive Grid Layout
-
 a {
   transition: var(--transition-all);
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 .h1,

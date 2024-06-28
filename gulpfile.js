@@ -45,7 +45,7 @@ function jsTask() {
     // Birleştirilecek JS dosyaları
     'src/scripts/_bootstrap.bundle.js',
     // 'src/scripts/_navigation.js',
-    // 'src/scripts/_swiper.js',
+    'src/scripts/_swiper.js',
     // 'src/scripts/_telinput.js',
     // 'src/scripts/_fancybox.umd.js',
     'src/scripts/_custom.js'

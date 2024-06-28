@@ -1,6 +1,12 @@
 (function () {
   "use strict";
 
+  const slider = new Swiper(".mySwiper", {
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+
   function heroSlider() {
     if (document.querySelector('.hero-slider')) {
       const swiper = new Swiper('.hero-slider .swiper', {

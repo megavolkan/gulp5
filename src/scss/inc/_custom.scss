@@ -86,4 +86,8 @@ h6,
 
 section.section {
   padding-block: clamp(2rem, 7vw, 8rem);
+
+  & + section.section {
+    padding-top: 0;
+  }
 }

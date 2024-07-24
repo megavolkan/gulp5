@@ -48,6 +48,7 @@ function jsTask() {
     'src/scripts/_swiper.js',
     // 'src/scripts/_telinput.js',
     // 'src/scripts/_fancybox.umd.js',
+    // 'src/scripts/_fslightbox.js',
     'src/scripts/_custom.js'
   ], { sourcemaps: true })
     .pipe(concat('script.js'))
